@@ -28,7 +28,7 @@ func main() {
 			logrus.WithError(err).Fatal("Notify Error")
 		}
 		
-		time.Sleep(2 * time.Minute)
+		time.Sleep(15 * time.Minute)
 		
 	}
 }
