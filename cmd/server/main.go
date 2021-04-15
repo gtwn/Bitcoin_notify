@@ -16,19 +16,21 @@ func main() {
 		logrus.WithError(err).Fatal("Read Config")
 	}
 	for {
-		xrp,btc,jfin,err := svc.GetTicker24hr(cfg.BitAPI)
+		xrp,btc,jfin,xzc,err := svc.GetTicker24hr(cfg.BitAPI)
 		if err != nil {
 			logrus.WithError(err).Fatal("ticker fail")
 		}
 		spew.Dump(&xrp)
 		spew.Dump(&btc)
 		spew.Dump(&jfin)
+		spew.Dump(&xzc)
 
-		if err := svc.LineNotify(cfg.ChannelAccessToken, cfg.LineNoti ,xrp,btc,jfin) ; err != nil {
+
+		if err := svc.LineNotify(cfg.ChannelAccessToken, cfg.LineNoti ,xrp,btc,jfin,xzc) ; err != nil {
 			logrus.WithError(err).Fatal("Notify Error")
 		}
 		
-		time.Sleep(2 * time.Minute)
+		time.Sleep(15 * time.Minute)
 		
 	}
 }

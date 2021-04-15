@@ -8,10 +8,10 @@ import (
 )
 
 
-func LineNotify(chs string,api string,xrp *model.Ticker, btc *model.Ticker, jfin *model.Ticker) error {
+func LineNotify(chs string,api string,xrp *model.Ticker, btc *model.Ticker, jfin *model.Ticker, xzc *model.Ticker) error {
 	
-	message := fmt.Sprintf("\nlast XRP: %s\nhigh XRP: %s\nlow XRP: %s\n------------------\nlast BTC: %s\nhigh BTC: %s\nlow BTC %s\n------------------\nlast JFIN: %s\nhigh JFIN: %s\nlow JFIN: %s",
-	xrp.LastPrice,xrp.HighPrice,xrp.LowPrice,btc.LastPrice,btc.HighPrice,btc.LowPrice,jfin.LastPrice,jfin.HighPrice,jfin.LowPrice)
+	message := fmt.Sprintf("\nlast XRP: %s\nhigh XRP: %s\nlow XRP: %s\n------------------\nlast BTC: %s\nhigh BTC: %s\nlow BTC %s\n------------------\nlast JFIN: %s\nhigh JFIN: %s\nlow JFIN: %s\n------------------\nlast XZC: %s\nhigh XZC: %s\nlow XZC: %s",
+	xrp.LastPrice,xrp.HighPrice,xrp.LowPrice,btc.LastPrice,btc.HighPrice,btc.LowPrice,jfin.LastPrice,jfin.HighPrice,jfin.LowPrice,xzc.LastPrice,xzc.HighPrice,xzc.LowPrice)
 
 	client := resty.New()
 	auth := fmt.Sprintf("Bearer %s",chs)
